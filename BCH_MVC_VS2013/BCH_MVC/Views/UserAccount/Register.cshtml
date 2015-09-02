@@ -1,0 +1,46 @@
+﻿@model BCH_MVC.Models.AccountRegister
+@{
+    ViewBag.Title = "Register";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@using (Html.BeginForm("Register", "UserAccount", FormMethod.Post))
+{
+    <table align="center">
+        <tr>
+            <td>
+                <h2>Register</h2>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                @Html.LabelFor(m => m.UserId)
+            </td>
+            <td>
+                @Html.TextBoxFor(m => m.UserId)<br />
+            </td>
+        </tr>
+        <tr>
+            <td>
+                @Html.LabelFor(m => m.Pwd)
+            </td>
+            <td>
+                @Html.PasswordFor(m => m.Pwd)<br />
+            </td>
+        </tr>
+        <tr>
+            <td>
+                @Html.LabelFor(m => m.Pwd_Confirm)
+                
+            </td>
+            <td>
+                @Html.PasswordFor(m => m.Pwd_Confirm)<br />
+            </td>
+        </tr>
+        <tr>
+            <td align="center">
+                <input type="submit" value="注册" />
+            </td>
+        </tr>
+    </table>
+}

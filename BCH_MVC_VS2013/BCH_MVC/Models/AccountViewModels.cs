@@ -46,7 +46,7 @@ namespace BCH_MVC.Models
     public class RegisterViewModel
     {
         [Required]
-        [Display(Name = "用户名")]
+        [Display(Name = "手机号")]
         public string UserName { get; set; }
 
         [Required]
