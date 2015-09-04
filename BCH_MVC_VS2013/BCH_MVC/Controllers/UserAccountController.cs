@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using BCH_MVC.Models;
+using System.Data.SqlClient;
 
 namespace BCH_MVC.Controllers
 {
@@ -26,6 +27,9 @@ namespace BCH_MVC.Controllers
         {
             var UserId = model.UserId;
             var Pwd = model.Pwd;
+            //测试所用连接数据库函数
+            Sqltest();
+            //***********************
             Response.Write("<script>alert('注册成功！！')</script>");
             return Redirect("../Home/Index");
         }
@@ -33,6 +37,19 @@ namespace BCH_MVC.Controllers
         public ActionResult Login()
         {
             return View();
+        }
+
+        //测试所用连接数据库函数
+        public void Sqltest()
+        {
+            //创建数据库连接字符串
+            var ConStr = System.Configuration.ConfigurationManager.ConnectionStrings["BCH_MVC_SQL"].ConnectionString;
+            SqlConnection con = new SqlConnection(ConStr);
+            con.Open();
+            string CmdStr = "insert into UserAccount(UserId,Phone,Pwd) values('" + "123123" + "','" + "123321" + "','" + "11111" + "')";
+            SqlCommand cmd = new SqlCommand(CmdStr, con);
+            cmd.ExecuteNonQuery();
+            con.Close();
         }
     }
 }
