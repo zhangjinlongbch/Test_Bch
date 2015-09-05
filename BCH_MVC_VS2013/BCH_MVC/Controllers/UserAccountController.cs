@@ -33,12 +33,18 @@ namespace BCH_MVC.Controllers
             Response.Write("<script>alert('注册成功！！')</script>");
             return Redirect("../Home/Index");
         }
-        [HttpPost]
         public ActionResult Login()
         {
             return View();
         }
+        [HttpPost]
+        public void Login(AccountLogin model)
+        {
+            var uid = model.UserId;
+            var pwd = model.Pwd;
+            //FindUserAccount(uid,pwd)?Login : ReWrite
 
+        }
         //测试所用连接数据库函数
         public void Sqltest()
         {
