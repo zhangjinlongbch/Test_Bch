@@ -3,17 +3,20 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using BCH_MVC.Models;
 
 namespace BCH_MVC.Controllers
 {
     public class EssayController : Controller
     {
         // GET: Essay
-        public ActionResult Index()
+
+        public ActionResult Create_Essay()
         {
             return View();
         }
-        public ActionResult Create_Essay()
+        [HttpPost]
+        public ActionResult Create_Essay(Essay model)
         {
             return View();
         }
