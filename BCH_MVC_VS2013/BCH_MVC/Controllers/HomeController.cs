@@ -13,7 +13,9 @@ namespace BCH_MVC.Controllers
         {
             List<Essay> EssayList = GetEssayList();
             //foreach?显示EssayList中的内容
+            ViewBag.list = EssayList;
             return View();
+            
         }
         public ActionResult About()
         {

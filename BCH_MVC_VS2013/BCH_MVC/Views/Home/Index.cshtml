@@ -1,17 +1,21 @@
-﻿@{
+﻿
+@{
     ViewBag.Title = "个人主页";
     Layout = "~/Views/Shared/_Layout.cshtml";
+    var list = (List<BCH_MVC.Models.Essay>)ViewBag.list;
 }
 
-@using (Html.BeginForm("Register", "UserAccount", FormMethod.Post))
-{
-    @Html.AntiForgeryToken()
-    <table>
+
+<table>
+    @foreach (BCH_MVC.Models.Essay essay in list)
+    {
         <tr>
             <td>
-                <a href="../Essay/Create_Essay"><input type="button" value="创建日志"/></a>
-                
+                @essay.UserID
+            </td>
+             <td>
+                 @Html.ActionLink(essay.Title, "Create_Essay", "Essay")
             </td>
         </tr>
-    </table>
-}
+    }
+</table>

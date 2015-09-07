@@ -238,6 +238,7 @@
     <Content Include="Views\Comment\Delete_Comment.cshtml" />
     <Content Include="Views\Essay\Essay_List.cshtml" />
     <Content Include="Views\UserAccount\Login.cshtml" />
+    <Content Include="Views\Essay\Manage_Essay.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

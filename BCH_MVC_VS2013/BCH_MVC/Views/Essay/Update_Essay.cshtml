@@ -1,8 +1,36 @@
-﻿
+﻿@model BCH_MVC.Models.Essay
 @{
     ViewBag.Title = "Update_Essay";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
 <h2>Update_Essay</h2>
+@using (Html.BeginForm("Update_Essay", "Essay", FormMethod.Post))
+{
+    <table>
+        <tr>
+            <td>
+                @Html.LabelFor(m => m.Title)
+            </td>
+            <td>
+                @Html.TextBoxFor(m => m.Title)<br />
+            </td>
+        </tr>
+        <tr>
+            <td>
+                @Html.LabelFor(m => m.Content)
+            </td>
+            <td>
+                @Html.TextAreaFor(model => model.Content, new { rows = "30", style = "width:400%" })
+
+            </td>
+        </tr>
+
+        <tr>
+            <td align="center">
+                <input type="submit" value="提交" />
+            </td>
+        </tr>
+    </table>
+}
 

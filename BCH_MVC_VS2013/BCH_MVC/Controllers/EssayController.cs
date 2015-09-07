@@ -30,6 +30,7 @@ namespace BCH_MVC.Controllers
         }
         public ActionResult Update_Essay()
         {
+            
             return View();
         }
         public ActionResult Delete_Essay()
@@ -40,6 +41,18 @@ namespace BCH_MVC.Controllers
         {
             return View();
         }
+        public ActionResult Manage_Essay()
+        {
+            var uid = Session["UserId"].ToString();
+            List<Essay> EssayList = GetEssayList(uid);
+            ViewBag.list = EssayList;
+            return View();
+        }
+        public List<Essay> GetEssayList(string uid)
+        {
+            DBHelper db = new DBHelper();
+            return db.GetEssayList(uid);
+        }
+    }
 
     }
-}
