@@ -16,9 +16,17 @@ namespace BCH_MVC.Controllers
             return View();
         }
         [HttpPost]
-        public ActionResult Create_Essay(Essay model)
+        public ActionResult Create_Essay(Essay model,AccountLogin user)
         {
-            return View();
+
+            DBHelper tmpDBHelper = new DBHelper();
+            var title   = model.Title;
+            var content = model.Content;
+            var userID = Session["UserId"].ToString();
+
+            tmpDBHelper.SqlExcute("insert into Essay(UserId,EssayTitle,EssayContent) values('"+userID+"','"+title+"','"+content+"')");
+
+            return Redirect("../Home/Index");
         }
         public ActionResult Update_Essay()
         {
@@ -28,5 +36,10 @@ namespace BCH_MVC.Controllers
         {
             return View();
         }
+        public ActionResult Essay_List()
+        {
+            return View();
+        }
+
     }
 }

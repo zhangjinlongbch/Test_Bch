@@ -2,7 +2,6 @@
 @model BCH_MVC.Models.AccountLogin
 @{
     ViewBag.Title = "Login";
-    Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
 @using (Html.BeginForm("Login", "UserAccount", FormMethod.Post))
@@ -24,12 +23,12 @@
         <tr>
             <td>
                 @Html.LabelFor(m => m.Pwd):
-                
+
             </td>
             <td>
                 @Html.PasswordFor(m => m.Pwd)
             </td>
-</tr>
+        </tr>
         <tr>
             <td align="center">
                 <input type="submit" value="登陆" />
