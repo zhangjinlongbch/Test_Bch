@@ -14,6 +14,7 @@ namespace BCH_MVC.Models
         [Display(Name = "密码")]
         [DataType(DataType.Password)]
         public string Pwd { get; set; }
+        
     }
     //注册时的账户MODEL
     public class AccountRegister
