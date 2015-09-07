@@ -46,30 +46,62 @@ namespace BCH_MVC
             IsCorrect = (SqlExcute(cmd) != 0) ? true : false;
             return IsCorrect;
         }
-        //返回文章列表，以DATASET形式存储
-        public DataSet EssaySet()
+        //返回文章列表
+        public List<Essay> GetEssayList()
         {
+            List<Essay> EssayList = new List<Essay>();
+            Essay essay = new Essay();
             SqlConnection con = new SqlConnection(ConStr);
             con.Open();
-            string cmd = "select * from Essay";
-            SqlDataAdapter sda = new SqlDataAdapter(cmd, con);
-            DataSet ds = new DataSet();
-            sda.Fill(ds,"Essay");
+            SqlCommand cmd = new SqlCommand("select * from Essay", con);
+            SqlDataReader reader = cmd.ExecuteReader();
+            while (reader.Read())
+            {
+                essay.UserID = reader["UserId"].ToString();
+                essay.Title = reader["EssayTitle"].ToString();
+                essay.Content = reader["EssayContent"].ToString();
+                EssayList.Add(essay);
+            }
             con.Close();
-            return ds;
+            return EssayList;
         }
-        //返回评论列表，以DATASET形式存储
-        public DataSet CommentSet()
+        //返回个人文章列表
+        public List<Essay> GetEssayList(string uid)
         {
+            List<Essay> EssayList = new List<Essay>();
+            Essay essay = new Essay();
             SqlConnection con = new SqlConnection(ConStr);
             con.Open();
-            string cmd = "select * from Comment";
-            SqlDataAdapter sda = new SqlDataAdapter(cmd, con);
-            DataSet ds = new DataSet();
-            sda.Fill(ds, "Comment");
+            SqlCommand cmd = new SqlCommand("select * from Essay where UserId = '"+uid+"'", con);
+            SqlDataReader reader = cmd.ExecuteReader();
+            while (reader.Read())
+            {
+                essay.UserID = reader["UserId"].ToString();
+                essay.Title = reader["EssayTitle"].ToString();
+                essay.Content = reader["EssayContent"].ToString();
+                EssayList.Add(essay);
+            }
             con.Close();
-            return ds;
+            return EssayList;
         }
-        //~~~~~~~~~~~~
+        //返回个人评论列表
+        public List<Comment> GetCommentList(string uid)
+        {
+            List<Comment> CommentList = new List<Comment>();
+            Comment comment = new Comment();
+            SqlConnection con = new SqlConnection(ConStr);
+            con.Open();
+            SqlCommand cmd = new SqlCommand("select * from Essay where UserId = '"+uid+"'", con);
+            SqlDataReader reader = cmd.ExecuteReader();
+            while (reader.Read())
+            {
+                comment.UserID = reader["UserId"].ToString();
+                comment.Content = reader["CommentContent"].ToString();
+                comment.CurrentTime = reader["CurrentTime"].ToString();
+                CommentList.Add(comment);
+            }
+            con.Close();
+            return CommentList;
+        }
     }
 }

@@ -13,6 +13,9 @@ namespace BCH_MVC.Models
         public string Content { get; set; }
         [Required]
         [Display(Name = "时间")]
-        public DateTime CurrentTime { get; set; }
+        public string CurrentTime { get; set; }
+        [Required]
+        [Display(Name = "作者")]
+        public string UserID { get; set; }
     }
 }

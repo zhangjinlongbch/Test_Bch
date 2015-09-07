@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using BCH_MVC.Models;
 
 namespace BCH_MVC.Controllers
 {
@@ -10,9 +11,10 @@ namespace BCH_MVC.Controllers
     {
         public ActionResult Index()
         {
+            List<Essay> EssayList = GetEssayList();
+            //foreach?显示EssayList中的内容
             return View();
         }
-
         public ActionResult About()
         {
             ViewBag.Message = "Your application description page.";
@@ -25,6 +27,11 @@ namespace BCH_MVC.Controllers
             ViewBag.Message = "Your contact page.";
 
             return View();
+        }
+        public List<Essay> GetEssayList()
+        {
+            DBHelper db = new DBHelper();
+            return db.GetEssayList();
         }
     }
 }

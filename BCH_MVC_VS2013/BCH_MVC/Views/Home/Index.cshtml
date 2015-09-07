@@ -2,3 +2,15 @@
     ViewBag.Title = "个人主页";
 }
 
+@using (Html.BeginForm("Register", "UserAccount", FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+    <table>
+        <tr>
+            <td>
+                <a href="../Essay/Create_Essay"><input type="button" value="创建日志"/></a>
+                
+            </td>
+        </tr>
+    </table>
+}
