@@ -46,9 +46,10 @@ namespace BCH_MVC.Controllers
             DBHelper db = new DBHelper();
             var uid = model.UserId;
             var pwd = model.Pwd;
+            Session["UserId"] = uid;
             if (db.UserCorrect(uid,pwd))
             {
-                return Redirect("../Home/Index");
+                return Redirect("~/Home/Index");
             }
             else
             {

@@ -6,7 +6,8 @@
 
 <h2>Create_Essay</h2>
 
-
+@using (Html.BeginForm("Create_Essay", "Essay", FormMethod.Post))
+{ 
 <table>
     <tr>
         <td>
@@ -32,3 +33,4 @@
         </td>
     </tr>
 </table>
+}
