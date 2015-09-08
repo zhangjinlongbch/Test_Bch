@@ -52,6 +52,7 @@ namespace BCH_MVC.Controllers
         {
             DBHelper db = new DBHelper();
             return db.GetEssayList(uid);
+            ///////
         }
     }
 
