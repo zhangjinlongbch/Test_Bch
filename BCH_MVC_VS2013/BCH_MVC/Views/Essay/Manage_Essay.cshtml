@@ -1,8 +1,9 @@
-﻿
+﻿@model BCH_MVC.Models.Essay
 @{
     ViewBag.Title = "Manage_Essay";
     Layout = "~/Views/Shared/_Layout.cshtml";
     var list = (List<BCH_MVC.Models.Essay>)ViewBag.list;
+    BCH_MVC.Models.Essay essay_model = new BCH_MVC.Models.Essay();
 }
 
 
@@ -14,10 +15,16 @@
                 @essay.UserID
             </td>
             <td>
+                @{ 
+                    essay_model.UserID = essay.UserID;
+                    essay_model.Title = essay.Title;
+                    essay_model.Content = essay.Content;
+                    ViewBag.Essay_Model = essay_model;
+                }
                 @Html.ActionLink(essay.Title, "Create_Essay", "Essay")
             </td>
             <td>
-                @Html.ActionLink("修改","Update_Essay","Essay")
+                @Html.ActionLink("修改", "Update_Essay", "Essay")
             </td>
             <td>
                 @Html.ActionLink("删除", "Delete_Essay", "Essay")

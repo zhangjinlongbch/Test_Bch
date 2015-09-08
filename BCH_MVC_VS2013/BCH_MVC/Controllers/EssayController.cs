@@ -30,8 +30,8 @@ namespace BCH_MVC.Controllers
         }
         public ActionResult Update_Essay()
         {
-            
-            return View();
+            Essay essay_model = (Essay)ViewBag.Essay_Model;
+            return View(essay_model);
         }
         public ActionResult Delete_Essay()
         {
