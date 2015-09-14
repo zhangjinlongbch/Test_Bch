@@ -1,27 +1,27 @@
-﻿
-@{
+﻿@{
     ViewBag.Title = "Manage_Essay";
     Layout = "~/Views/Shared/_Layout.cshtml";
     var list = (List<BCH_MVC.Models.Essay>)ViewBag.list;
 }
 
 
-<table>
-    @foreach (BCH_MVC.Models.Essay essay in list)
-    {
-        <tr>
-            <td>
-                @essay.UserID
-            </td>
-            <td>
-                @Html.ActionLink(essay.Title, "Create_Essay", "Essay")
-            </td>
-            <td>
-                @Html.ActionLink("修改","Update_Essay","Essay")
-            </td>
-            <td>
-                @Html.ActionLink("删除", "Delete_Essay", "Essay")
-            </td>
-        </tr>
-    }
-</table>
+    <table>
+        @foreach (BCH_MVC.Models.Essay essay in list)
+        {
+            <tr>
+                <td>
+                    @essay.UserID
+                </td>
+                <td>
+                    @essay.Title
+                </td>
+                <td>
+                    @Html.ActionLink("修改", "Update_Essay", "Essay", new { title = essay.Title, content = essay.Content }, null)
+                </td>
+    
+                <td>
+                    @Html.ActionLink("删除", "Delete_Essay", "Essay")
+                </td>
+            </tr>
+        }
+    </table>

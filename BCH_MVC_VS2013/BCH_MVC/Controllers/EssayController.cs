@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using BCH_MVC.Models;
+using BCH_MVC.ViewModels;
 
 namespace BCH_MVC.Controllers
 {
@@ -28,9 +29,13 @@ namespace BCH_MVC.Controllers
 
             return Redirect("../Home/Index");
         }
-        public ActionResult Update_Essay()
+
+
+        public ActionResult Update_Essay(string title, string content)
         {
-            
+
+            var Essay_title = title;
+            var Essay_content = content;
             return View();
         }
         public ActionResult Delete_Essay()
@@ -41,7 +46,7 @@ namespace BCH_MVC.Controllers
         {
             return View();
         }
-        public ActionResult Manage_Essay()
+        public ActionResult Manage_Essay(string title)
         {
             var uid = Session["UserId"].ToString();
             List<Essay> EssayList = GetEssayList(uid);

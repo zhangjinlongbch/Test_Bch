@@ -50,13 +50,13 @@ namespace BCH_MVC
         public List<Essay> GetEssayList()
         {
             List<Essay> EssayList = new List<Essay>();
-            Essay essay = new Essay();
             SqlConnection con = new SqlConnection(ConStr);
             con.Open();
             SqlCommand cmd = new SqlCommand("select * from Essay", con);
             SqlDataReader reader = cmd.ExecuteReader();
             while (reader.Read())
             {
+                Essay essay = new Essay();
                 essay.UserID = reader["UserId"].ToString();
                 essay.Title = reader["EssayTitle"].ToString();
                 essay.Content = reader["EssayContent"].ToString();
@@ -69,13 +69,13 @@ namespace BCH_MVC
         public List<Essay> GetEssayList(string uid)
         {
             List<Essay> EssayList = new List<Essay>();
-            Essay essay = new Essay();
             SqlConnection con = new SqlConnection(ConStr);
             con.Open();
             SqlCommand cmd = new SqlCommand("select * from Essay where UserId = '"+uid+"'", con);
             SqlDataReader reader = cmd.ExecuteReader();
             while (reader.Read())
             {
+                Essay essay = new Essay();
                 essay.UserID = reader["UserId"].ToString();
                 essay.Title = reader["EssayTitle"].ToString();
                 essay.Content = reader["EssayContent"].ToString();
@@ -88,13 +88,13 @@ namespace BCH_MVC
         public List<Comment> GetCommentList(string uid)
         {
             List<Comment> CommentList = new List<Comment>();
-            Comment comment = new Comment();
             SqlConnection con = new SqlConnection(ConStr);
             con.Open();
             SqlCommand cmd = new SqlCommand("select * from Essay where UserId = '"+uid+"'", con);
             SqlDataReader reader = cmd.ExecuteReader();
             while (reader.Read())
             {
+                Comment comment = new Comment();
                 comment.UserID = reader["UserId"].ToString();
                 comment.Content = reader["CommentContent"].ToString();
                 comment.CurrentTime = reader["CurrentTime"].ToString();
